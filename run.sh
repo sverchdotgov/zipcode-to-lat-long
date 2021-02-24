@@ -38,9 +38,10 @@ color() {
 
 mkdir -p zipcodes_by_states
 mkdir -p zipcodes_to_latlong_by_state
+mkdir -p logs
 
 run python zipcode_extractor.py
 
 for state in zipcodes_by_states/*; do
-	run python create_zipcode_to_latlon.py "${state}" "zipcodes_to_latlong_by_state/$(basename "${state%%.txt}").json" >|"$(basename "${state%%.txt}").log"
+	run python create_zipcode_to_latlon.py "${state}" "zipcodes_to_latlong_by_state/$(basename "${state%%.txt}").json" >|"logs/$(basename "${state%%.txt}").log"
 done
