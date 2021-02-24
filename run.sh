@@ -42,5 +42,5 @@ mkdir -p zipcodes_to_latlong_by_state
 run python zipcode_extractor.py
 
 for state in zipcodes_by_states/*; do
-	run python create_zipcode_to_latlon.py "zipcodes_by_states/${state}" "zipcodes_to_latlong_by_state/${state%.json}" >|"${state%.log}"
+	run python create_zipcode_to_latlon.py "${state}" "zipcodes_to_latlong_by_state/$(basename "${state%.json}")" >|"${state%.log}"
 done
